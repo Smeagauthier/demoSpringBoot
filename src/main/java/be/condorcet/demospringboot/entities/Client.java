@@ -1,5 +1,6 @@
 package be.condorcet.demospringboot.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.management.ConstructorParameters;
@@ -29,10 +30,12 @@ public class Client {
     @NonNull
     private String tel;
     // @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+   // @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client")
     //LAZY est la version par défaut
     //cascadeType.ALL permet d'effacer en cascade si le client disparaît
     // orphanRemoval=true permet d'ajouter et supprimer des commandes en DB à partir de la liste
     @ToString.Exclude
+    @JsonIgnore
     private List<Comfact> comfacts;
 }

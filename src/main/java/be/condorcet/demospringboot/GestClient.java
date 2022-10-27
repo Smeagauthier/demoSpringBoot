@@ -2,6 +2,8 @@ package be.condorcet.demospringboot;
 
 import be.condorcet.demospringboot.entities.Client;
 import be.condorcet.demospringboot.services.ClientServiceImpl;
+import be.condorcet.demospringboot.services.ClientServiceStub;
+import be.condorcet.demospringboot.services.InterfClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +15,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/clients")
 public class GestClient {
-    /*@Autowired
-    private ClientRepository clientRepository;*/
+
     @Autowired
-    private ClientServiceImpl clientServiceImpl;
+    private InterfClientService clientServiceImpl;
+
 
     @RequestMapping("/tous")
     public String affTous(Map<String, Object> model) {

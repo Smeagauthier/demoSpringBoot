@@ -1,6 +1,8 @@
 package be.condorcet.demospringboot.services;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface InterfService<T> {
     public T create(T t) throws Exception;
@@ -12,4 +14,6 @@ public interface InterfService<T> {
     public void delete(T t) throws Exception;
 
     public List<T> all() throws Exception;
+    public Page<T> allp(Pageable pageable) throws Exception;
+
 }

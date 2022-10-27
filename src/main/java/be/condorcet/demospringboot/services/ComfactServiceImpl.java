@@ -4,16 +4,19 @@ import be.condorcet.demospringboot.entities.Comfact;
 import be.condorcet.demospringboot.entities.Client;
 
 import java.util.List;
+
 import be.condorcet.demospringboot.repositories.ClientRepository;
 import be.condorcet.demospringboot.repositories.ComfactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
+//@Service
 @Transactional(rollbackOn = Exception.class)
-public class ComfactServiceImpl  implements InterfComfactService{
+public class ComfactServiceImpl implements InterfComfactService {
     @Autowired
     private ComfactRepository comfactRepository;
     @Autowired
@@ -44,6 +47,11 @@ public class ComfactServiceImpl  implements InterfComfactService{
     @Override
     public List<Comfact> all() throws Exception {
         return comfactRepository.findAll();
+    }
+
+    @Override
+    public Page<Comfact> allp(Pageable pageable) throws Exception {
+        return comfactRepository.findAll(pageable);
     }
 
     @Override

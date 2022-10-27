@@ -10,4 +10,5 @@ public interface ClientRepository extends JpaRepository<Client,Integer> {
     List<Client> findClientByLocaliteEndingWithAndCpAfter(String finloc, Integer cp); //attention faut utiliser les wrappers classes
 
     List<Client> findClientsByNomLike(String s);
+    Client findClientByNomAndPrenomAndTel(String nom, String prenom, String tel);
 }
